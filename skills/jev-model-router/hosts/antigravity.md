@@ -11,10 +11,10 @@
 Add `--confirmed` only when authorized (`auto_send` or "送出"); otherwise only recommend or `--dry-run`. Use the model from the routing state:
 
 ```shell
-jev-router launch --client antigravity --model 'MODEL' --question-file 'Q' --confirmed --json
+jev-router launch --client antigravity --model MODEL --question-file TMP/jev-q.txt --context-file TMP/jev-c.txt --confirmed --json
 ```
 
-- Add `--context-file` when there is context; add `--mode plan` while the host is in Plan Mode.
+- Run it as one command, nothing chained. Add `--mode plan` while the host is in Plan Mode.
 - The launcher checks `agy models` and opens a dedicated Orca terminal in interactive mode (`--prompt-interactive`). After answering it stays in Antigravity for direct follow-ups. jev-router picks the working directory; tool permissions are not bypassed.
 - `focus_requested: false`: ask the user to open the "Jev · Antigravity" tab in Orca. Do not relaunch.
 
@@ -37,4 +37,3 @@ jev-router collect --job-dir 'JOB_DIR' --json
 - Run `collect --job-dir 'JOB_DIR' --close --confirmed --json` only when the user explicitly says "關閉" (close) and it maps to this item. Ask if it maps to none or several. Auto-send never authorizes closing.
 - `terminal_closed: true`: reply "closed" and clear the pending-close item. On failure keep the state; do not call the model again.
 - Follow-ups in the main session do not open a new CLI and never use `--continue`; a new task is routed again.
-- Afterward delete this run's question and context temp files.

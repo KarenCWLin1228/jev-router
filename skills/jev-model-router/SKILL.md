@@ -17,15 +17,17 @@ Reply briefly in the user's language. Never fabricate results, retry, switch age
 
 ## 2. Model
 
+1. With the Write tool, write the question to `TMP/jev-q.txt` and the context to `TMP/jev-c.txt` (`TMP` = the absolute system temp folder). Context is only the task, prior failures, and constraints.
+2. Run exactly this one command, with nothing chained before or after it:
+
 ```shell
-jev-router recommend --client TARGET --question-file Q.txt --context-file C.txt --json
+jev-router recommend --client TARGET --question-file TMP/jev-q.txt --context-file TMP/jev-c.txt --json
 ```
 
+- Do not pre-check the command, create folders, or delete files with the shell; the two files are overwritten next time.
 - Host-declared Plan Mode: add `--route deep` (no Jev call). The run is plan-only.
 - User names a model: skip the CLI; source is the user and it waits for "送出".
-- Question and context go in new UTF-8 temp files; context is only the task, prior failures, and constraints. Delete them after execution.
-- Use the result only if exit code is `0` and `status` is `awaiting_send`; otherwise explain and stop.
-- If `jev-router` is missing, point to this skill's `README.md`.
+- Use the result only if exit code is `0` and `status` is `awaiting_send`; otherwise explain and stop. If the command is not found, point to this skill's `README.md`.
 
 Show one line, then act:
 
