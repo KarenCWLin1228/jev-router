@@ -1,0 +1,20 @@
+[project]
+name = "jev-router"
+version = "0.1.0"
+description = "Ask Jev which model tier a task needs, for Claude Code, Codex, and Antigravity"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = ["httpx>=0.28,<1", "truststore>=0.10.4"]
+
+[project.scripts]
+jev-router = "jev_router.cli:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.ruff]
+line-length = 120
+
+[tool.ruff.lint]
+select = ["E", "F", "I"]

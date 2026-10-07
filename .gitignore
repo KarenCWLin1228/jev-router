@@ -1,0 +1,12 @@
+.env
+.env.*
+!.env.example
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.ruff_cache/
+dist/
+*.egg-info/
+# 全域 ignore 排除 CLAUDE.md；Windows 不分大小寫，需保留 skill 的 host 檔
+!skills/jev-model-router/hosts/claude.md
